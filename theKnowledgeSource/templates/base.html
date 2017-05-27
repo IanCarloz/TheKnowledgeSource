@@ -12,6 +12,22 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <style>
+  .modal-header, .login-title, .close {
+      background-color: #44b4c4;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
+  .btn-login {
+    color: #fff;
+    background-color: #44b4c4;
+    border-color: #44b4c4;
+}
+  </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -32,6 +48,13 @@
         <li><a href="#portfolio">PORTFOLIO</a></li>
         <li><a href="#pricing">PRICING</a></li>
         <li><a href="#contact">CONTACT</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="#contact">ADD SOURCE</a></li>
+        <li><a href="{% url 'landing:logout' %}">LOGOUT</a></li>
+        {% else%}
+        <li><a href="#" data-toggle="modal" id="myBtn">LOGIN</a></li>
+        {% endif%}
+        
       </ul>
     </div>
   </div>
