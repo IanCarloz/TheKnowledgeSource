@@ -24,7 +24,7 @@ def login(request):
                 iniciar(request,user)
                 return redirect('landing:index')
             else:
-                return redirect('landing:index')
+                return redirect('landing:index')#usuario no registrado
 
     return render(request,'landing/index.html')
 
@@ -37,8 +37,10 @@ def signup(request):
         if form.is_valid():
             form.cleaned_data.pop('confirm_password', None)
             user = User.objects.create_user(**form.cleaned_data)
-            return redirect("landing:index")
-    
+            if user is not None:
+                iniciar(request,user)    
+                return redirect("landing:index")
+                
     return render(request,'landing/index.html')
             
     

@@ -2,6 +2,22 @@ from django import forms
 from django.forms import ModelForm
 
 class SignupForm(forms.Form):
+    nombre = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "class":"form-control",
+                "placeholder":"nombre"
+            }
+        ))
+    apellido_paterno = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "class":"form-control",
+                "placeholder":"apellido paterno"
+            }
+        ))
     email = forms.EmailField(
         max_length=100,
         widget=forms.EmailInput(
