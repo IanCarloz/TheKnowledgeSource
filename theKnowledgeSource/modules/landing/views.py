@@ -7,8 +7,9 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    form = LoginForm(request.POST or None)
-    return render(request,'landing/index.html',{'login':form})
+    form_login = LoginForm(request.POST or None)
+    form_sign = SignupForm(request.POST or None)
+    return render(request,'landing/index.html',{'login':form_login, 'sign':form_sign})
 
 
 def login(request):
@@ -25,7 +26,7 @@ def login(request):
             else:
                 return redirect('landing:index')
 
-    return render(request,'landing/index.html', {"login":form})
+    return render(request,'landing/index.html')
 
 
 
@@ -38,7 +39,7 @@ def signup(request):
             user = User.objects.create_user(**form.cleaned_data)
             return redirect("landing:index")
     
-    return render(request,'landing/sign.html',{'sign':form})
+    return render(request,'landing/index.html')
             
     
 

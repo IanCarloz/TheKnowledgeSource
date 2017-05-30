@@ -27,6 +27,7 @@
     background-color: #44b4c4;
     border-color: #44b4c4;
 }
+
   </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -44,17 +45,17 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about">ABOUT</a></li>
-        <li><a href="#services">SERVICES</a></li>
-        <li><a href="#portfolio">PORTFOLIO</a></li>
-        <li><a href="#pricing">PRICING</a></li>
-        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="#services">HIGHLIGHTS</a></li>
+        <li><a href="#portfolio">SEARCH</a></li>
+        <li><a href="#pricing">RESOURCES</a></li>
         {% if request.user.is_authenticated %}
         <li><a href="#contact">ADD SOURCE</a></li>
         <li><a href="{% url 'landing:logout' %}">LOGOUT</a></li>
-        {% else%}
+        {% else %}
         <li><a href="#" data-toggle="modal" id="myBtn">LOGIN</a></li>
-        {% endif%}
-        
+        <li><a href="#" data-toggle="modal_s" id="myBtn_s">SIGN IN</a></li>
+        {% endif %}
+
       </ul>
     </div>
   </div>
