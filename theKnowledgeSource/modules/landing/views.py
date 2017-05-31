@@ -4,12 +4,22 @@ from django.contrib.auth.models import User
 from modules.users.models import User
 from django.contrib.auth import authenticate,logout as salir,login as iniciar
 from django.http import HttpResponse
+from modules.playlists.forms import PlaylistForm
+from modules.recursos.forms import RecursoForm
 
 # Create your views here.
 def index(request):
     form_login = LoginForm(request.POST or None)
     form_sign = SignupForm(request.POST or None)
-    return render(request,'landing/index.html',{'login':form_login, 'sign':form_sign})
+    form_playlist = PlaylistForm(request.POST or None)
+    form_recurso = RecursoForm(request.POST or None)
+
+    return render(request,'landing/index.html',{'login':form_login, 'sign':form_sign,
+        'playlist':form_playlist,
+        'recurso': form_recurso,
+        
+        }
+    )
 
 
 def login(request):
@@ -49,3 +59,24 @@ def signup(request):
 def logout(request):
     salir(request)
     return redirect("landing:index")
+
+
+def add_playlist(request):
+       if request.method == 'POST':
+           form_playlist = PlaylistForm(request.POST)
+           if form_playlist.is_valid():
+                Playlist = form_playlist.save(commit=False)
+                u = request.user
+                Playlist.user = u
+                Playlist.save()
+                return redirect('landing:index')
+
+def add_recurso(request):
+       if request.method == 'POST':
+           form_recurso = RecursoForm(request.POST)
+           if form_recurso.is_valid():
+                Recurso = form_recurso.save(commit=False)
+                u = request.user
+                Recurso.user = u
+                Recurso.save()
+                return redirect('landing:index')

@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
@@ -11,14 +10,14 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('recursos', '0001_initial'),
         ('playlists', '0001_initial'),
-        ('Profile', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='profile',
-            name='playlist',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='playlists.Playlist'),
+            model_name='playlist',
+            name='playlist_recurso',
+            field=models.ManyToManyField(to='recursos.Recurso'),
         ),
     ]

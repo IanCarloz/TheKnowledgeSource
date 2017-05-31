@@ -10,7 +10,7 @@ class PlaylistForm(ModelForm):
         fields = ('user','nombre','playlist_recurso')
         widgets = {
 
-            'user': forms.Select(attrs={'class': 'form-control'},choices=LENGUAJE_CHOICES),
+            'user': forms.Select(attrs={'class': 'form-control'}),
             'nombre': forms.TextInput(attrs=
                     {
                         "class": "form-control",

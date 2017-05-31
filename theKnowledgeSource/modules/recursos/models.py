@@ -31,7 +31,7 @@ class Recurso(models.Model):
     nivel = models.CharField(max_length=200,choices=NIVEL_CHOICES)
     es_favorito = models.BooleanField(default=True)
     url = models.URLField()
-    archivo = models.FileField()
+    #archivo = models.FileField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

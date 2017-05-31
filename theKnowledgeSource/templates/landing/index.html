@@ -29,6 +29,78 @@
   </div>
 </div>
 
+<!-- Container (Playlist Section) -->
+<div id="playlist" class="container-fluid bg-grey">
+  <h2 class="text-center">CONTACT</h2>
+  <form action="{% url 'landing:add_playlist' %}" method="POST">
+    {% csrf_token %}
+  <div class="row">
+    <div class="col-sm-12 slideanim">
+      <div class="row">
+        <div class="form-group col-sm-5">
+          <label>Nombre</label>
+        {{playlist.nombre}}
+        </div>
+        <div class="form-group col-sm-5">
+          <label>Agregar</label>
+          {{playlist.playlist_recurso}}
+        </div>
+      </div>
+       <div class="row">
+        <div class="col-sm-10 form-group">
+          <button class="btn btn-default pull-right" type="submit">Guardar</button>
+        </div>
+      </div>
+<br><br><br><br><br><br>
+    </div>
+  </div>
+  </form>
+</div>
+
+<!-- Container (Recurso Section) -->
+<div id="recurso" class="container-fluid">
+<h2 class="text-center">CONTACT</h2>
+  <form action="{% url 'landing:add_recurso' %}" method="POST">
+    {% csrf_token %}
+  <div class="row">
+    <div class="col-sm-12 slideanim">
+      <div class="row">
+        <div class="form-group col-sm-5">
+          <label>Titulo</label>
+        {{recurso.titulo}}
+        </div>
+        <div class="form-group col-sm-5">
+          <label>Lenguaje</label>
+        {{recurso.lenguaje}}
+        </div>
+        <div class="form-group col-sm-5">
+          <label>Tipo</label>
+        {{recurso.tipo}}
+        </div>
+        <div class="form-group col-sm-5">
+          <label>Nivel</label>
+        {{recurso.nivel}}
+        </div>
+        <div class="form-group col-sm-5">
+          <label>Me gusta</label>
+        {{recurso.es_favorito}}
+        </div>
+        
+        
+        <div class="form-group col-sm-5">
+          <label>Url</label>
+          {{recurso.url}}
+        </div>
+      </div>
+       <div class="row">
+        <div class="form-group col-sm-10">
+          <button class="btn btn-default pull-right" type="submit">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
 
 <div class="container">
   <!-- Modal -->

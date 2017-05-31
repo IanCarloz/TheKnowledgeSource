@@ -3,7 +3,10 @@ from django.forms import ModelForm
 from .models import Recurso
 
 class RecursoForm(ModelForm):
-    LENGUAJE_CHOICES = (
+
+
+    class Meta:
+        LENGUAJE_CHOICES = (
         ('Python','Python'),
         ('Java','Java'),
         ('PHP','PHP'),
@@ -11,22 +14,20 @@ class RecursoForm(ModelForm):
         ('javaScript','javaScript'),
         ('C#','C#'),
         ('Ruby','Ruby'),
-    )
-    TIPO_CHOICES = (
-        ('PDF','PDF'),
-        ('Video','Video'),
-        ('url','url'),
-        ('ebook','ebook'),
-    )
-    NIVEL_CHOICES = (
-        ('Básico','Básico'),
-        ('Intermedio','Intermedio'),
-        ('Avanzado','Avanzado'),
-    )
-
-    class Meta:
+        )
+        TIPO_CHOICES = (
+            ('PDF','PDF'),
+            ('Video','Video'),
+            ('url','url'),
+            ('ebook','ebook'),
+        )
+        NIVEL_CHOICES = (
+            ('Básico','Básico'),
+            ('Intermedio','Intermedio'),
+            ('Avanzado','Avanzado'),
+        )
         model = Recurso
-        fields = ('titulo','lenguaje','tipo','nivel','es_favorito','url','archivo')
+        fields = ('titulo','lenguaje','tipo','nivel','es_favorito','url')
         widgets = {
             'titulo': forms.TextInput(attrs=
                     {
@@ -48,12 +49,4 @@ class RecursoForm(ModelForm):
                     }
                 ),
 
-            'archivo': forms.ClearableFileInput(
-                attrs=
-                    {
-                        "class": "form-control",
-                    }
-
-            ),
-            
         }
