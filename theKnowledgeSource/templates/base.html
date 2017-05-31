@@ -27,6 +27,7 @@
     background-color: #44b4c4;
     border-color: #44b4c4;
 }
+
   </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -43,21 +44,19 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <!--li><a href="#about">ABOUT</a></li>
-        <li><a href="#services">SERVICES</a></li>
-        <li><a href="#portfolio">PORTFOLIO</a></li>
-        <li><a href="#pricing">PRICING</a></li-->
-        <li><a href="#contact">CONTACT</a></li>
+
+        <li><a href="#main">PRINCIPALES</a></li>
+        <li><a href="#busqueda">BUSCAR</a></li>
+        <li><a href="#destacados">DESTACADOS</a></li>
         {% if request.user.is_authenticated %}
         <li><a href="#contact">AGREGAR RECURSO</a></li>
-        
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ request.user.nombre|upper }}</a></li>
         <li><a href="{% url 'landing:logout' %}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;SALIR</a></li>
         {% else%}
         <li><a href="#" data-toggle="modal" id="myBtn">INICIAR SESIÓN</a></li>
         <li><a href="#" data-toggle="modal_s" id="myBtn_s">CREAR CUENTA</a></li>
         {% endif%}
-        
+
       </ul>
     </div>
   </div>
@@ -70,7 +69,7 @@
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
-  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
+  <p> Regresar al index <a href="" title=""></a></p>
 </footer>
 
 <script src="{% static 'js/main.js' %}" charset="utf-8"></script>
