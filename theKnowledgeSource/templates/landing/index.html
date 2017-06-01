@@ -246,6 +246,49 @@
   </div>
 </div>
 
+<!-- Container (Perfil Section) -->
+<div id="perfil" class="container-fluid">
+<h2 class="text-center">PERFIL</h2>
+  <div class="row">
+
+    <div class="col-sm-4">
+      <ul class="list-group">
+      {% for playlist in playlists %}
+        <li class="list-group-item">{{playlist.nombre}} 
+        <a href="#"><span class="glyphicon glyphicon-thumbs-up"></span> Me gusta</a> 
+        <a href="#"><span class="glyphicon glyphicon-thumbs-down"></span> No Me gusta</a> 
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+
+
+     <div class="col-sm-4">
+      <ul class="list-group">
+      {% for favorito in favoritos %}
+        <li class="list-group-item">{{favorito.nombre}} 
+        <a href="#"><span class="glyphicon glyphicon-thumbs-up"></span> Me gusta</a> 
+        <a href="#"><span class="glyphicon glyphicon-thumbs-down"></span> No Me gusta</a> 
+        </li>      
+      {% endfor %}
+      </ul>
+    </div>
+
+
+    <div class="col-sm-4">
+      <ul class="list-group">
+      {% for historial in historiales %}
+        <li class="list-group-item">{{historial.nombre}} 
+        <a href="#"><span class="glyphicon glyphicon-thumbs-up"></span> Me gusta</a> 
+        <a href="#"><span class="glyphicon glyphicon-thumbs-down"></span> No Me gusta</a> 
+        </li>      
+      {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+</div>
+
 <!--sign in-->
 <script>
 $(document).ready(function(){

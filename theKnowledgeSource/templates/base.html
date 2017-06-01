@@ -49,7 +49,7 @@
         {% if request.user.is_authenticated %}
         <li><a href="#recurso">AGREGAR RECURSO</a></li>
         <li><a href="#playlist">CREAR PLAYLIST</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ request.user.nombre|upper }}</a></li>
+        <li><a href="#perfil"><span class="glyphicon glyphicon-user"></span> {{ request.user.nombre|upper }}</a></li>
         <li><a href="{% url 'landing:logout' %}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;SALIR</a></li>
         {% else%}
         <li><a href="#main">PRINCIPALES</a></li>

@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate,logout as salir,login as iniciar
 from django.http import HttpResponse
 from modules.playlists.forms import PlaylistForm
 from modules.recursos.forms import RecursoForm
-
+from modules.playlists.models import Playlist
 # Create your views here.
 def index(request):
     form_login = LoginForm(request.POST or None)
@@ -14,12 +14,30 @@ def index(request):
     form_playlist = PlaylistForm(request.POST or None)
     form_recurso = RecursoForm(request.POST or None)
 
-    return render(request,'landing/index.html',{'login':form_login, 'sign':form_sign,
+    usuario = request.user #Obtenemos el usuario que esta actualmente logeado
+
+    if usuario.is_authenticated():
+        lista = Playlist.objects.all().select_related().filter(user=usuario) #obtenemos las playlist del usuario 
+        lista = lista.exclude(nombre="Favoritos")
+        lista = lista.exclude(nombre="Historial")
+        favoritos = Playlist.objects.all().select_related().filter(user=usuario,nombre='Favoritos') #obtenemos el playlist 'favoritos' del usuario
+        historiales = Playlist.objects.all().select_related().filter(user=usuario,nombre='Historial') #obtenemos las playlist 'Historial' del usuario  
+        print(lista) #Revisamos que este devolviendo algo
+        return render(request,'landing/index.html',{'login':form_login, 'sign':form_sign,
         'playlist':form_playlist,
         'recurso': form_recurso,
-        
+        'playlists': lista, #Mandamos la variable lista con el alias 'playlists' al index
+        'favoritos': favoritos, #Mandamos la variable favoritos con el alias 'favoritos' al index
+        'historiales': historiales, #Mandamos la variable historial con el alias 'historial' al index
         }
-    )
+        )
+
+    else:
+        return render(request,'landing/index.html',{'login':form_login, 'sign':form_sign,
+            'playlist':form_playlist,
+            'recurso': form_recurso,
+            }
+        )
 
 
 def login(request):
@@ -48,7 +66,11 @@ def signup(request):
             form.cleaned_data.pop('confirm_password', None)
             user = User.objects.create_user(**form.cleaned_data)
             if user is not None:
-                iniciar(request,user)    
+                iniciar(request,user)
+                f = Playlist(user=request.user,nombre='Favoritos')
+                h = Playlist(user=request.user,nombre='Historial')
+                f.save()
+                h.save()    
                 return redirect("landing:index")
                 
     return render(request,'landing/index.html')
