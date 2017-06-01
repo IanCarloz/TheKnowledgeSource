@@ -38,9 +38,10 @@ class RecursoForm(ModelForm):
             'lenguaje': forms.Select(attrs={'class': 'form-control'},choices=LENGUAJE_CHOICES),
             'tipo': forms.Select(attrs={'class': 'form-control'},choices=TIPO_CHOICES),
             'nivel': forms.Select(attrs={'class': 'form-control'},choices=NIVEL_CHOICES),
-            'es_favorito': forms.CheckboxInput(attrs=
+            'es_favorito': forms.NumberInput(attrs=
                     {
                         'class': 'form-control',
+                        'value': 0
                     }
                 ),
             'url': forms.URLInput(attrs=

@@ -28,10 +28,11 @@
     </div>
   </div>
 </div>
+<!-->
 
 <!-- Container (Playlist Section) -->
 <div id="playlist" class="container-fluid bg-grey">
-  <h2 class="text-center">CONTACT</h2>
+  <h2 class="text-center">CREAR PLAYLIST</h2>
   <form action="{% url 'landing:add_playlist' %}" method="POST">
     {% csrf_token %}
     {{ form.errors }}  
@@ -52,15 +53,15 @@
           <button class="btn btn-default pull-right" type="submit">Guardar</button>
         </div>
       </div>
-<br><br><br><br><br><br>
     </div>
   </div>
+  <br><br><br><br><br><br><br>
   </form>
 </div>
 
 <!-- Container (Recurso Section) -->
 <div id="recurso" class="container-fluid">
-<h2 class="text-center">CONTACT</h2>
+<h2 class="text-center">CREAR RECURSO</h2>
   <form action="{% url 'landing:add_recurso' %}" method="POST">
     {% csrf_token %}
   <div class="row">

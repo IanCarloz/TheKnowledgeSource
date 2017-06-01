@@ -29,7 +29,7 @@ class Recurso(models.Model):
     lenguaje = models.CharField(max_length=200,choices=LENGUAJE_CHOICES)
     tipo = models.CharField(max_length=200,choices=TIPO_CHOICES)
     nivel = models.CharField(max_length=200,choices=NIVEL_CHOICES)
-    es_favorito = models.BooleanField(default=True)
+    es_favorito = models.IntegerField()
     url = models.URLField()
     #archivo = models.FileField()
     created = models.DateTimeField(auto_now_add=True)
