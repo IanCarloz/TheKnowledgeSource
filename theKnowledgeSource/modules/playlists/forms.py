@@ -7,10 +7,9 @@ class PlaylistForm(ModelForm):
 
     class Meta:
         model = Playlist
-        fields = ('user','nombre','playlist_recurso')
+        fields = ('nombre','playlist_recurso')
         widgets = {
 
-            'user': forms.Select(attrs={'class': 'form-control'}),
             'nombre': forms.TextInput(attrs=
                     {
                         "class": "form-control",

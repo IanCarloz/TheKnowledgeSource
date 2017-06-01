@@ -34,6 +34,7 @@
   <h2 class="text-center">CONTACT</h2>
   <form action="{% url 'landing:add_playlist' %}" method="POST">
     {% csrf_token %}
+    {{ form.errors }}  
   <div class="row">
     <div class="col-sm-12 slideanim">
       <div class="row">

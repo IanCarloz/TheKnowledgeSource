@@ -62,14 +62,19 @@ def logout(request):
 
 
 def add_playlist(request):
-       if request.method == 'POST':
-           form_playlist = PlaylistForm(request.POST)
-           if form_playlist.is_valid():
-                Playlist = form_playlist.save(commit=False)
-                u = request.user
-                Playlist.user = u
-                Playlist.save()
-                return redirect('landing:index')
+    if request.method == 'POST':
+        form_playlist = PlaylistForm(request.POST or None)
+        print(form_playlist)
+        if form_playlist.is_valid():
+            Playlist = form_playlist.save(commit=False)
+            u = request.user
+            Playlist.user = u
+            Playlist.save()
+            return redirect('landing:index')
+        else:
+            return HttpResponse('hola')
+    
+        
 
 def add_recurso(request):
        if request.method == 'POST':
