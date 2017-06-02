@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from modules.playlists.forms import PlaylistForm
 from modules.recursos.forms import RecursoForm
 from modules.playlists.models import Playlist
+from modules.recursos.models import Recurso
 # Create your views here.
 def index(request):
     form_login = LoginForm(request.POST or None)
@@ -107,3 +108,10 @@ def add_recurso(request):
                 Recurso.user = u
                 Recurso.save()
                 return redirect('landing:index')
+
+def search(request):
+    recuros = None
+    if request.method == 'POST':
+        recursos = Recurso.objects.filter(titulo__icontains=request.POST['q'])
+        print(recursos)
+    return render(request,'landing/resultado.html',{'recursos':recursos})
